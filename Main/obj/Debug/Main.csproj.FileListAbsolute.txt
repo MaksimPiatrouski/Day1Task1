@@ -1,0 +1,7 @@
+C:\workspace\CSharp\projects\Day1Task1\Main\bin\Debug\Main.pdb
+C:\workspace\CSharp\projects\Day1Task1\Main\bin\Debug\Utils.dll
+C:\workspace\CSharp\projects\Day1Task1\Main\bin\Debug\Utils.pdb
+C:\workspace\CSharp\projects\Day1Task1\Main\obj\Debug\Main.csprojResolveAssemblyReference.cache
+C:\workspace\CSharp\projects\Day1Task1\Main\obj\Debug\Main.pdb
+C:\workspace\CSharp\projects\Day1Task1\Main\bin\Debug\Main.exe
+C:\workspace\CSharp\projects\Day1Task1\Main\obj\Debug\Main.exe

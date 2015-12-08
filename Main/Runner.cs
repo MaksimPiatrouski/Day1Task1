@@ -7,47 +7,74 @@ namespace Main
     {
         public static void Main()
         {
-            double number;
+            int valueI;
+            double valueD;
             double x = 0;
-            double n = 0;
+            int n = 0;
             double p = 0;
+            double result;
 
-            Console.Write("Enter number: ");
-            String aString = Console.ReadLine();
-            if (double.TryParse(aString, out number))
-                x = number;
-
-            Console.Write("Enter root: ");
-            String nString = Console.ReadLine();
-            if (double.TryParse(nString, out number))
-                n = number;
-
-            Console.Write("Enter precision: ");
-            String pString = Console.ReadLine();
-            if (double.TryParse(pString, out number))
-                p = number;
-
-            double result = MathRoot.GetRoot(x, n, p);
-
-            Console.WriteLine("/nResult: " + result);
-
-            //compare result with Math.Pow result
-            double resultPow = Math.Pow(x, 1/n);
-
-            result = Math.Round(result, Convert.ToInt32(n));
-            resultPow = Math.Round(resultPow, Convert.ToInt32(n));
-
-            bool equalResults;
-            if (result == resultPow)
+            bool loop = true;
+            while (loop)
             {
-                equalResults = true;
+                Console.Write("Enter number: ");
+                String aString = Console.ReadLine();
+                if (double.TryParse(aString, out valueD))
+                    x = valueD;
+
+                Console.Write("Enter root: ");
+                String nString = Console.ReadLine();
+                if (int.TryParse(nString, out valueI))
+                    n = valueI;
+
+                Console.Write("Enter precision: ");
+                String pString = Console.ReadLine();
+                if (double.TryParse(pString, out valueD))
+                    p = valueD;
+
+                if (MathRoot.GetRoot(x, n, p, out result))
+                {
+                    Console.WriteLine("\nResult: " + result);
+
+                    //compare result with Math.Pow result
+                    double resultPow = Math.Pow(x, 1 / (double)n);
+                    Console.WriteLine("\nResult: " + resultPow);
+
+                    result = Math.Round(result, n);
+                    resultPow = Math.Round(resultPow, n);
+
+                    bool equalResults;
+                    if (result == resultPow)
+                    {
+                        equalResults = true;
+                    }
+                    else
+                    {
+                        equalResults = false;
+                    }
+                    Console.WriteLine(equalResults);
+                    loop = Runner.Exit();
+                }
+                else
+                {
+                    Console.WriteLine("\nIllegal input\n");
+                    loop = Runner.Exit();
+                }
             }
-            else
+        }
+        public static bool Exit()
+        {
+            Console.WriteLine("\nPress any key to continue\n"
+                            + "Press 0 to exit");
+            string key = Console.ReadLine();
+            switch (key)
             {
-                equalResults = false;
+                case "0":
+                    return false;
+
+                default:
+                    return true;
             }
-            Console.WriteLine(equalResults);
-            Console.ReadKey();
         }
     }
 }
